@@ -13,7 +13,6 @@ This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices us
 
 
 ## Directory Structure
-## Directory Structure
 
 <pre>
 my-rpi-cluster/
