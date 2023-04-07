@@ -13,45 +13,45 @@ This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices us
 
 
 ## Directory Structure
-
+<pre>
 my-rpi-cluster/
 ├── ansible/
-│   ├── inventory.ini
-│   ├── k3s_install.yml
-│   ├── nfs_install.yml
-│   └── README.md
+│ ├── inventory.ini
+│ ├── k3s_install.yml
+│ ├── nfs_install.yml
+│ └── README.md
 ├── applications/
-│   ├── nodejs-app/
-│   │   ├── deployment.yaml
-│   │   └── service.yaml
-│   └── python-app/
-│       ├── deployment.yaml
-│       └── service.yaml
+│ ├── nodejs-app/
+│ │ ├── deployment.yaml
+│ │ └── service.yaml
+│ └── python-app/
+│ ├── deployment.yaml
+│ └── service.yaml
 ├── clusters/
-│   ├── k3s/
-│   │   ├── ingress.yaml
-│   │   ├── namespaces.yaml
-│   │   ├── network.yaml
-│   │   ├── storage.yaml
-│   │   └── update_management.yaml
-│   └── lxe/
-│       └── lxe_configuration.yaml
+│ ├── k3s/
+│ │ ├── ingress.yaml
+│ │ ├── namespaces.yaml
+│ │ ├── network.yaml
+│ │ ├── storage.yaml
+│ │ └── update_management.yaml
+│ └── lxe/
+│ └── lxe_configuration.yaml
 ├── gitops/
-│   ├── flux_install.yml
-│   └── README.md
+│ ├── flux_install.yml
+│ └── README.md
 ├── monitoring/
-│   ├── grafana.yaml
-│   ├── prometheus.yaml
-│   └── README.md
+│ ├── grafana.yaml
+│ ├── prometheus.yaml
+│ └── README.md
 ├── network/
-│   ├── cni.yaml TODO
-│   └── networkpolicy.yaml TODO
+│ ├── cni.yaml
+│ └── networkpolicy.yaml
 └── metallb/
-    ├── namespace.yaml
-    ├── deployment.yaml
-    ├── rbac.yaml
-    └── configmap.yaml
-
+├── namespace.yaml
+├── deployment.yaml
+├── rbac.yaml
+└── configmap.yaml
+</pre>
 ## Setup 
 - Ansible: Use the provided Ansible playbooks to set up K3s on the Raspberry Pi devices and configure NFS storage.
 - K3s Cluster: Deploy the K3s cluster with high availability by having multiple control plane nodes.
