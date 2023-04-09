@@ -1,0 +1,52 @@
+---
+- name: Install and configure NFS server
+  hosts: master
+  become: yes
+  tasks:
+    - name: Install NFS server packages
+      ansible.builtin.apt:
+        name:
+          - nfs-kernel-server
+          - nfs-common
+        state: present
+
+    - name: Create NFS shared directory
+      ansible.builtin.file:
+        path: /srv/nfs
+        state: directory
+        mode: '0777'
+
+    - name: Configure NFS exports
+      ansible.builtin.blockinfile:
+        path: /etc/exports
+        block: |
+          /srv/nfs 192.168.1.0/24(rw,sync,no_root_squash,no_subtree_check)
+
+    - name: Restart NFS server
+      ansible.builtin.systemd:
+        name: nfs-kernel-server
+        state: restarted
+        daemon_reload: yes
+
+- name: Install and configure NFS clients
+  hosts: worker
+  become: yes
+  tasks:
+    - name: Install NFS client packages
+      ansible.builtin.apt:
+        name:
+          - nfs-common
+        state: present
+
+    - name: Create NFS mount directory
+      ansible.builtin.file:
+        path: /mnt/nfs
+        state: directory
+        mode: '0777'
+
+    - name: Add NFS mount to /etc/fstab
+      ansible.builtin.mount:
+        path: /mnt/nfs
+        src: 192.168.1.2:/srv/nfs
+        fstype: nfs
+        state: present
