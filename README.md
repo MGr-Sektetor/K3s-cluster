@@ -17,10 +17,11 @@ This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices us
 <pre>
 my-rpi-cluster/
 ├── ansible/
-│   ├── inventory.ini
 │   ├── k3s_install.yml
+│   ├── k3s_init.yml
 │   ├── nfs_install.yml
-│   └── README.md
+│   ├── setup_env.yml
+│   └── k3s_token.yml
 ├── applications/
 │   ├── nodejs-app/
 │   │   ├── deployment.yaml
