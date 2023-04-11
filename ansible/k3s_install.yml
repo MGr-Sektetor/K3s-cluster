@@ -20,16 +20,6 @@
           - curl
           - unzip
 
-    - name: Install K3s on the first control plane node
-      command: "curl -sfL https://get.k3s.io | sh -s - server --tls-san '{{ ansible_host }}'"
-      register: k3s_install
-      when: inventory_hostname == '192.168.0.238'
-
-    - name: Set K3s token fact for other nodes
-      set_fact:
-        k3s_token: "{{ k3s_install.stdout_lines | select('search', 'K3S_TOKEN') | first }}"
-      when: inventory_hostname != '192.168.0.238'
-
     - name: Install K3s on the remaining control plane nodes using the K3s token
       ansible.builtin.shell:
         cmd: "curl -sfL https://get.k3s.io | K3S_TOKEN={{ k3s_token }} sh -s - server --tls-san {{ ansible_ssh_host }} --server https://192.168.0.238:6443"
