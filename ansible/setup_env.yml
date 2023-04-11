@@ -1,0 +1,24 @@
+---
+- name: Install packages and Python libraries
+  hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Update and upgrade packages
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Install Python 3 pip
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Install Ansible
+      ansible.builtin.pip:
+        name:
+          - ansible
+          - ansible-core==2.14.4
+        state: present
+        extra_args: --user
+        executable: /usr/bin/pip3

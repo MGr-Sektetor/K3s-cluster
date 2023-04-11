@@ -20,7 +20,7 @@
       ansible.builtin.blockinfile:
         path: /etc/exports
         block: |
-          /srv/nfs 192.168.1.0/24(rw,sync,no_root_squash,no_subtree_check)
+          /srv/nfs 192.168.0.0/24(rw,sync,no_root_squash,no_subtree_check)
 
     - name: Restart NFS server
       ansible.builtin.systemd:
@@ -47,6 +47,6 @@
     - name: Add NFS mount to /etc/fstab
       ansible.builtin.mount:
         path: /mnt/nfs
-        src: 192.168.1.2:/srv/nfs
+        src: 192.168.0.238:/srv/nfs
         fstype: nfs
         state: present
