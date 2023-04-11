@@ -1,0 +1,19 @@
+---
+- name: Update cmdline.txt and reboot nodes
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update /boot/cmdline.txt with cgroup settings
+      ansible.builtin.lineinfile:
+        path: /boot/cmdline.txt
+        regexp: '^(.*)$'
+        line: '\1 cgroup_memory=1 cgroup_enable=memory'
+        backrefs: yes
+      register: cmdline_updated
+
+    - name: Reboot the node if /boot/cmdline.txt was updated
+      ansible.builtin.reboot:
+        reboot_timeout: 300
+      when: cmdline_updated.changed
