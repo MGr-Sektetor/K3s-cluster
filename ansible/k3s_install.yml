@@ -20,26 +20,15 @@
           - curl
           - unzip
 
-    - name: Install k3sup
-      become: yes
-      get_url:
-        url: https://github.com/alexellis/k3sup/releases/download/0.11.0/k3sup-armhf
-        dest: /usr/local/bin/k3sup
-        mode: '0755'
-
-    - name: Generate K3s token on the first control plane node
-      command: k3sup token create
-      register: k3s_token_output
+    - name: Install K3s on the first control plane node
+      command: "curl -sfL https://get.k3s.io | sh -s - server --tls-san '{{ ansible_host }}'"
+      register: k3s_install
       when: inventory_hostname == '192.168.0.238'
 
     - name: Set K3s token fact for other nodes
       set_fact:
-        k3s_token: "{{ hostvars['192.168.0.238']['k3s_token_output']['stdout'] }}"
+        k3s_token: "{{ k3s_install.stdout_lines | select('search', 'K3S_TOKEN') | first }}"
       when: inventory_hostname != '192.168.0.238'
-
-    - name: Install K3s on the first control plane node
-      command: "curl -sfL https://get.k3s.io | K3S_TOKEN='{{ k3s_token }}' sh -s - server --tls-san '{{ ansible_host }}'"
-      when: inventory_hostname == '192.168.0.238'
 
     - name: Install K3s on the remaining control plane nodes using the K3s token
       ansible.builtin.shell:
@@ -47,4 +36,3 @@
       when: "'192.168.0.238' not in inventory_hostname"
       tags:
         - k3s_install
-
