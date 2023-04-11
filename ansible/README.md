@@ -32,3 +32,5 @@ Installs Ansible and a specific version of Ansible Core using pip.
 *k3s_token.yml performs the following tasks:*
 
 This repository contains a vault-encrypted file called k3s_token.yml. The file stores the K3s token used to join new nodes to the K3s cluster. The Ansible Vault provides encryption to securely store sensitive information.
+
+To decrypt it use ansible-vault decrypt k3s_token.yml --vault-password-file <vault_password_file>
