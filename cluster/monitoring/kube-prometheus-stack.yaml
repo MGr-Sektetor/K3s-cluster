@@ -21,6 +21,13 @@ spec:
       retries: 3
   values:
     grafana:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
       adminPassword: "test"
       service:
         type: NodePort
@@ -29,6 +36,13 @@ spec:
         nodePort: 32000
     prometheus:
       prometheusSpec:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
         service:
           type: NodePort
           port: 9090
@@ -38,6 +52,13 @@ spec:
         global:
           resolve_timeout: 5m
       alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 256Mi
         service:
           type: NodePort
           port: 9093
