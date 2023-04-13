@@ -1,6 +1,6 @@
 ---
 - name: Setup K3s cluster
-  hosts: all
+  hosts: control_plane
   become: yes
   gather_facts: yes
 
@@ -24,5 +24,32 @@
       ansible.builtin.shell:
         cmd: "curl -sfL https://get.k3s.io | K3S_TOKEN={{ k3s_token }} sh -s - server --tls-san {{ ansible_ssh_host }} --server https://192.168.0.238:6443"
       when: "'192.168.0.238' not in inventory_hostname"
+      tags:
+        - k3s_install
+
+- name: Setup K3s worker nodes
+  hosts: worker
+  become: yes
+  gather_facts: yes
+
+  pre_tasks:
+    - name: Include K3s token
+      include_vars: k3s_token.yml
+      tags: always
+  tasks:
+    - name: Update and upgrade packages
+      apt:
+        update_cache: yes
+        upgrade: safe
+
+    - name: Install dependencies
+      apt:
+        name:
+          - curl
+          - unzip
+
+    - name: Install K3s on worker nodes using the K3s token
+      ansible.builtin.shell:
+        cmd: "curl -sfL https://get.k3s.io | K3S_TOKEN={{ k3s_token }} sh -s - agent --server https://192.168.0.238:6443"
       tags:
         - k3s_install
