@@ -6,7 +6,7 @@ metadata:
   labels:
     app: prometheus-server
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: prometheus-server
@@ -27,10 +27,10 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 300M
+              memory: 200M
             limits:
               cpu: 2
-              memory: 1Gi
+              memory: 500M
           volumeMounts:
             - name: prometheus-config-volume
               mountPath: /etc/prometheus/
