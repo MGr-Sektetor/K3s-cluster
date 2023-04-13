@@ -44,5 +44,3 @@ spec:
   
         - name: prometheus-storage-volume
           emptyDir: {}
-
-# Flux sync
