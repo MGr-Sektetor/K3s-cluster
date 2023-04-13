@@ -6,7 +6,7 @@ metadata:
   labels:
     app: prometheus-server
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: prometheus-server
@@ -26,10 +26,10 @@ spec:
             - containerPort: 9090
           resources:
             requests:
-              cpu: 300m
+              cpu: 500m
               memory: 300M
             limits:
-              cpu: 1
+              cpu: 2
               memory: 1Gi
           volumeMounts:
             - name: prometheus-config-volume
