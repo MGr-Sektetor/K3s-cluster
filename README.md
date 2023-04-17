@@ -15,44 +15,46 @@ This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices us
 ## Directory Structure
 
 <pre>
-my-rpi-cluster/
-├── ansible/
-│   ├── k3s_install.yml
-│   ├── k3s_init.yml
-│   ├── nfs_install.yml
-│   ├── setup_env.yml
-│   └── k3s_token.yml
-├── applications/
-│   ├── nodejs-app/
-│   │   ├── deployment.yaml
-│   │   └── service.yaml
-│   └── python-app/
-│       ├── deployment.yaml
-│       └── service.yaml
-├── clusters/
-│   ├── k3s/
-│   │   ├── ingress.yaml
-│   │   ├── namespaces.yaml
-│   │   ├── network.yaml
-│   │   ├── storage.yaml
-│   │   └── update_management.yaml
-│   └── lxe/
-│       └── lxe_configuration.yaml
-├── gitops/
-│   ├── flux_install.yml
-│   └── README.md
-├── monitoring/
-│   ├── grafana.yaml
-│   ├── prometheus.yaml
-│   └── README.md
-├── network/
-│   ├── cni.yaml
-│   └── networkpolicy.yaml
-└── metallb/
-    ├── namespace.yaml
-    ├── deployment.yaml
-    ├── rbac.yaml
-    └── configmap.yaml
+K3s-cluster/
+├── ansible
+│   ├── inventory.ini
+│   ├── k3s_init.yml
+│   ├── k3s_install.yml
+│   ├── k3s_token.yml
+│   ├── nfs_install.yml
+│   ├── README.md
+│   └── setup_env.yml
+├── applications
+│   ├── nodejs
+│   │   ├── app.js
+│   │   ├── Dockerfile
+│   │   └── package.json
+│   └── python
+│       └── Dockerfile
+├── cluster
+│   ├── applications
+│   │   ├── nodejs-deploy.yaml
+│   │   └── README.md
+│   ├── flux-system
+│   │   ├── gotk-components.yaml
+│   │   ├── gotk-sync.yaml
+│   │   ├── kustomization.yaml
+│   │   └── README.md
+│   └── monitoring
+│       ├── grafana
+│       │   ├── grafana-datasource-config.yaml
+│       │   ├── grafana-deployment.yaml
+│       │   └── service.yaml
+│       ├── node-exporter
+│       │   ├── daemonset.yaml
+│       │   └── service.yaml
+│       ├── prometheus
+│       │   ├── clusterRole.yaml
+│       │   ├── config-map.yaml
+│       │   ├── prometheus-deployment.yaml
+│       │   └── prometheus-service.yaml
+│       └── README.md
+└── README.md
 </pre>
 
 
