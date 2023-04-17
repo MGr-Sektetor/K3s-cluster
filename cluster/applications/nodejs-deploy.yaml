@@ -18,7 +18,7 @@ spec:
         image: grygamar/simple-nodejs-app:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 3005
 
 ---
 
@@ -33,5 +33,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000
+      targetPort: 3005
   type: NodePort
