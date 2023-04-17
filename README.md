@@ -29,10 +29,14 @@ K3s-cluster/
 │   │   ├── Dockerfile
 │   │   └── package.json
 │   └── python
-│       └── Dockerfile
+│       ├── app.py
+│       ├── Dockerfile
+│       └── requirements.txt
 ├── cluster
 │   ├── applications
+│   │   ├── app-namespace.yaml
 │   │   ├── nodejs-deploy.yaml
+│   │   ├── python-deploy.yaml
 │   │   └── README.md
 │   ├── flux-system
 │   │   ├── gotk-components.yaml
@@ -44,6 +48,7 @@ K3s-cluster/
 │       │   ├── grafana-datasource-config.yaml
 │       │   ├── grafana-deployment.yaml
 │       │   └── service.yaml
+│       ├── monitoring-namespace.yaml
 │       ├── node-exporter
 │       │   ├── daemonset.yaml
 │       │   └── service.yaml
