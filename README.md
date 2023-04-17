@@ -4,7 +4,6 @@ This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices us
 ## Features
 - Kubernetes cluster using K3s
 - High availability with multiple control plane nodes
-- Load balancing using MetalLB
 - GitOps workflow with Flux
 - Monitoring and observability using Grafana and Prometheus
 - NFS storage across Raspberry Pi nodes
@@ -70,4 +69,6 @@ K3s-cluster/
 
 ### TODO
 
-Network Policies
+- Network Policies (Cilium)
+- Load balancing using MetalLB
+- Logging for Applications
