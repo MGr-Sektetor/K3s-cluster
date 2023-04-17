@@ -11,12 +11,12 @@ spec:
     metadata:
       labels:
         app: simple-nodejs-app
-#    spec:
-#      containers:
-#      - name: simple-nodejs-app
-#        image: XXX/simple-nodejs-app:latest
-#        ports:
-#        - containerPort: 3000
+    spec:
+      containers:
+      - name: simple-nodejs-app
+        image: grygamar/simple-nodejs-app:latest
+        ports:
+        - containerPort: 3000
 
 ---
 
