@@ -62,18 +62,10 @@ K3s-cluster/
 </pre>
 
 
-## Setup 
-- Ansible: Use the provided Ansible playbooks to set up K3s on the Raspberry Pi devices and configure NFS storage.
-- K3s Cluster: Deploy the K3s cluster with high availability by having multiple control plane nodes.
-- Load Balancing: Install and configure MetalLB to provide load balancing for your applications.
-- GitOps: Set up a GitOps workflow using Flux to manage your Kubernetes resources from a Git repository.
-- Monitoring: Deploy Grafana and Prometheus for monitoring and observability of your cluster and applications.
-- Example Applications: Deploy example Node.js and Python applications to test your cluster's functionality.
-- Update Management: Use Ansible playbooks to keep your cluster components and operating system up-to-date.
-
 
 ### TODO
 
 - Network Policies (Cilium)
 - Load balancing using MetalLB
 - Logging for Applications
+- Use Taints for Control plane and add more RPi workers https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
