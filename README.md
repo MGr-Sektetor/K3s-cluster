@@ -47,6 +47,13 @@ K3s-cluster/
 │       ├── grafana
 │       │   ├── grafana-datasource-config.yaml
 │       │   ├── grafana-deployment.yaml
+│       │   ├── nfs-grafana-pv.yaml
+│       │   └── service.yaml
+│       ├── kube-state-metrics
+│       │   ├── cluster-role-binding.yaml
+│       │   ├── cluster-role.yaml
+│       │   ├── deployment.yaml
+│       │   ├── service-account.yaml
 │       │   └── service.yaml
 │       ├── monitoring-namespace.yaml
 │       ├── node-exporter
@@ -55,6 +62,7 @@ K3s-cluster/
 │       ├── prometheus
 │       │   ├── clusterRole.yaml
 │       │   ├── config-map.yaml
+│       │   ├── nfs-prometheus-pv.yaml
 │       │   ├── prometheus-deployment.yaml
 │       │   └── prometheus-service.yaml
 │       └── README.md
@@ -65,7 +73,8 @@ K3s-cluster/
 
 ### TODO
 
-- Network Policies (Cilium)
-- Load balancing using MetalLB
+- Network Policies + Loadbalancing (Cilium)
+- Dashboard as Code
+- StackRock
 - Logging for Applications
 - Use Taints for Control plane and add more RPi workers https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
