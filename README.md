@@ -65,7 +65,8 @@ K3s-cluster/
 
 ### TODO
 
-- Network Policies (Cilium)
-- Load balancing using MetalLB
+- Network Policies + Loadbalancing (Cilium)
+- Dashboard as Code
+- StackRock
 - Logging for Applications
 - Use Taints for Control plane and add more RPi workers https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
