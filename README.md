@@ -47,6 +47,13 @@ K3s-cluster/
 │       ├── grafana
 │       │   ├── grafana-datasource-config.yaml
 │       │   ├── grafana-deployment.yaml
+│       │   ├── nfs-grafana-pv.yaml
+│       │   └── service.yaml
+│       ├── kube-state-metrics
+│       │   ├── cluster-role-binding.yaml
+│       │   ├── cluster-role.yaml
+│       │   ├── deployment.yaml
+│       │   ├── service-account.yaml
 │       │   └── service.yaml
 │       ├── monitoring-namespace.yaml
 │       ├── node-exporter
@@ -55,6 +62,7 @@ K3s-cluster/
 │       ├── prometheus
 │       │   ├── clusterRole.yaml
 │       │   ├── config-map.yaml
+│       │   ├── nfs-prometheus-pv.yaml
 │       │   ├── prometheus-deployment.yaml
 │       │   └── prometheus-service.yaml
 │       └── README.md
