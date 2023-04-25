@@ -45,6 +45,14 @@ K3s-cluster/
 │   │   └── README.md
 │   └── monitoring
 │       ├── grafana
+│       │   ├── dashboards
+│       │   │   ├── grafana-dashboards.yaml
+│       │   │   ├── k8s-system-api-server.json
+│       │   │   ├── k8s-system-coredns.json
+│       │   │   ├── k8s-views-global.json
+│       │   │   ├── k8s-views-namespaces.json
+│       │   │   ├── k8s-views-nodes.json
+│       │   │   └── k8s-views-pods.json
 │       │   ├── grafana-datasource-config.yaml
 │       │   ├── grafana-deployment.yaml
 │       │   ├── nfs-grafana-pv.yaml
@@ -67,14 +75,12 @@ K3s-cluster/
 │       │   └── prometheus-service.yaml
 │       └── README.md
 └── README.md
-</pre>
 
 
 
 ### TODO
 
 - Network Policies + Loadbalancing (Cilium)
-- Dashboard as Code
 - StackRock
 - Logging for Applications
 - Use Taints for Control plane and add more RPi workers https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
