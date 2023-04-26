@@ -1,5 +1,5 @@
 # Raspberry Pi K3s Cluster
-This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices using K3s. The cluster includes high availability, load balancing with MetalLB, GitOps with Flux, monitoring using Grafana and Prometheus, and NFS storage.
+This project sets up a lightweight Kubernetes cluster on Raspberry Pi devices using K3s. The cluster includes high availability, GitOps with Flux, monitoring using Grafana and Prometheus, and NFS storage.
 
 ## Features
 - Kubernetes cluster using K3s
